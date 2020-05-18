@@ -13,15 +13,42 @@ var client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
+function GetData(tweets){
+  var tweetsArray = [];
+  for(var i = 0; i < tweets.search_metadata.count; i++){
+    var tweet = [];
+    tweet[i+1] = {
+
+       id:tweets.statuses[i].id,
+       hashtag: tweets.search_metadata.query, 
+       horario: tweets.statuses[i].created_at,
+       linguagem: tweets.statuses[i].lang,
+       mensagem: tweets.statuses[i].text,
+       seguidores: tweets.statuses[i].user.followers_count,
+       usuario: tweets.statuses[i].user.screen_name
+
+    };
+
+    tweetsArray[i] = tweet[i+1];
+    console.log("acabei o getdata");
+ };
+ console.log(tweetsArray);
+ return tweetsArray;
+}
+
 app.get("/tweets", function(req, res) {
   var params = {
-    q: "%23nasa",
+    q: "#nasa",
+    result_type: 'recent',
+    include_entities: 'false',
     count: 100
   };
 
-  client.get("search/tweets.json?", params, function(error, tweets, res) {
+  client.get("search/tweets.json?", params, async function(error, tweets, res) {
     if (!error) {
-      console.log(tweets);
+      var data = await GetData(tweets);
+      cassandra(data);
+      
     } else {
       console.log(error);
     }
