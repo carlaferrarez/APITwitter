@@ -18,7 +18,6 @@ module.exports =
   function populateData(tweetsArray){
 // tweetsArray.length
       for(var i = 0; i < tweetsArray.length; i++){
-        console.log("fazendo o populate data")
         client.execute(query, [tweetsArray[i].id,
         tweetsArray[i].hashtag,
         tweetsArray[i].horario,
@@ -28,6 +27,7 @@ module.exports =
         tweetsArray[i].usuario],{ prepare : true });
 
       };
+      console.log("deu certo");
   };
 
 // client.execute('select * from twitter.stweet', function(err, result) {

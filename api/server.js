@@ -30,30 +30,34 @@ function GetData(tweets){
     };
 
     tweetsArray[i] = tweet[i+1];
-    console.log("acabei o getdata");
  };
- console.log(tweetsArray);
  return tweetsArray;
 }
+module.exports = 
+function GetHashtag(query)
+{
 
-app.get("/tweets", function(req, res) {
-  var params = {
-    q: "#nasa",
-    result_type: 'recent',
-    include_entities: 'false',
-    count: 100
-  };
+ // app.get("/tweets", function(req, res) {
+    var params = {
+      q: '%23'+query,
+      result_type: 'recent',
+      include_entities: 'false',
+      count: 100
+    };
+    console.log(params);
 
-  client.get("search/tweets.json?", params, async function(error, tweets, res) {
-    if (!error) {
-      var data = await GetData(tweets);
-      cassandra(data);
-      
-    } else {
-      console.log(error);
-    }
-  });
-});
+    client.get("search/tweets.json?", params, async function(error, tweets, res) {
+      if (!error) {
+        var data = await GetData(tweets);
+        cassandra(data);
+        
+      } else {
+        console.log(error);
+      }
+    });
+//  });
+  
+}
 
 const port = process.env.PORT || 4000;
 
