@@ -18,14 +18,14 @@ function GetData(tweets){
   for(var i = 0; i < tweets.search_metadata.count; i++){
     var tweet = [];
     tweet[i+1] = {
-
-       id:tweets.statuses[i].id,
-       hashtag: tweets.search_metadata.query, 
-       horario: tweets.statuses[i].created_at,
-       linguagem: tweets.statuses[i].lang,
-       mensagem: tweets.statuses[i].text,
-       seguidores: tweets.statuses[i].user.followers_count,
-       usuario: tweets.statuses[i].user.screen_name
+      
+      usuario: tweets.statuses[i].user.screen_name,
+      seguidores: tweets.statuses[i].user.followers_count,
+      hashtag: tweets.search_metadata.query,
+      horario: tweets.statuses[i].created_at, 
+      id:tweets.statuses[i].id,
+      linguagem: tweets.statuses[i].lang,
+      mensagem: tweets.statuses[i].text   
 
     };
 

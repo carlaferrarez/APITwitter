@@ -10,24 +10,26 @@ const client = new cassandra.Client({contactPoints: ['127.0.0.1:9042'] ,
 // client.on('log', function(level, className, message, furtherInfo) {
 //   console.log('log event: %s -- %s', level, message);
 // });
+const query = 'INSERT INTO twitter.stweet (usuario, seguidores, hashtag, horario, id, linguagem, mensagem) VALUES (?, ?, ?, ?, ?, ?, ?)';
+const queryRemove = 'TRUNCATE twitter.stweet;'
 
 client.connect();
-const query = 'INSERT INTO twitter.stweet (id, hashtag, horario, linguagem, mensagem, seguidores, usuario) VALUES (?, ?, ?, ?, ?, ?, ?)';
 
 module.exports = 
   function populateData(tweetsArray){
-// tweetsArray.length
-      for(var i = 0; i < tweetsArray.length; i++){
-        client.execute(query, [tweetsArray[i].id,
-        tweetsArray[i].hashtag,
-        tweetsArray[i].horario,
-        tweetsArray[i].linguagem,
-        tweetsArray[i].mensagem,
-        tweetsArray[i].seguidores,
-        tweetsArray[i].usuario],{ prepare : true });
+    client.execute(queryRemove);
+    
+    for(var i = 0; i < tweetsArray.length; i++){
+      client.execute(query, [tweetsArray[i].usuario,
+      tweetsArray[i].seguidores,
+      tweetsArray[i].hashtag,
+      tweetsArray[i].horario,
+      tweetsArray[i].id,
+      tweetsArray[i].linguagem,
+      tweetsArray[i].mensagem],{ prepare : true });
 
-      };
-      console.log("deu certo");
+    };
+    console.log("deu certo");
   };
 
 // client.execute('select * from twitter.stweet', function(err, result) {
