@@ -98,6 +98,13 @@ With the application running, start a conversation with bot @tweetcafecastroBot
 ```
 
 ```
+## Future plans
+
+#### Spark
+Integrate Spark with the API
+
+#### Bot
+Develop more and simply the steps for the user. Bring also more information
 
 ## Built With
 
