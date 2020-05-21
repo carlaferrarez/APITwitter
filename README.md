@@ -88,7 +88,7 @@ If everything runs fine, this command will show you the first row of your databa
 ```
 test_spark_rdd.first
 ```
-We can also get the total of posts with a specific language, for example portuguese
+We can also get the total of posts of a specific language, for example portuguese
 
 ```
 test_spark_rdd.where("linguagem= ?", "pt").count() 
