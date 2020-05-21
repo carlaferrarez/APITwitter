@@ -88,6 +88,11 @@ If everything runs fine, this command will show you the first row of your databa
 ```
 test_spark_rdd.first
 ```
+We can also get the total of posts with a specific language, for example portuguese
+
+```
+test_spark_rdd.where("linguagem= ?", "pt").count() 
+```
 
 With all that settled up, now we just need to run the application. I used Visual Studio Code
 
