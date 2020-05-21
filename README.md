@@ -122,6 +122,9 @@ In my example I'll search for #covid
 ```
 /pesquisa covid 
 ```
+
+![alt text](https://github.com/carlaferrarez/tweetbot/blob/master/images/img4.jpg?raw=true)
+
 ## Future plans
 
 #### Spark
