@@ -3,8 +3,6 @@ dotenv.config({ path: "./config.env" });
 
 const Apitwitter = require("./api/server");
 const Telegraf = require('telegraf')
-const Markup = require('telegraf/markup')
-const Extra = require('telegraf/extra')
 const Stage = require('telegraf/stage');
 const session = require('telegraf/session');
 const WizardScene = require('telegraf/scenes/wizard');

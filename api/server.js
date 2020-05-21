@@ -6,7 +6,7 @@ const cassandra = require("./connection");
 
 dotenv.config({ path: "./config.env" });
 
-var client = new Twitter({
+const client = new Twitter({
   consumer_key: process.env.CONSUMER_KEY,
   consumer_secret: process.env.CONSUMER_SECRET,
   access_token_key: process.env.ACCESS_TOKEN_KEY,
@@ -36,8 +36,6 @@ function GetData(tweets){
 module.exports = 
 function GetHashtag(query)
 {
-
- // app.get("/tweets", function(req, res) {
     var params = {
       q: '%23'+query,
       result_type: 'recent',
@@ -55,7 +53,6 @@ function GetHashtag(query)
         console.log(error);
       }
     });
-//  });
   
 }
 
