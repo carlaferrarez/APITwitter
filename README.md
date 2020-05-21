@@ -32,6 +32,10 @@ In your terminal, type the following (in my case the username and password are '
 ```
 cqlsh -u admin -p admin
 ```
+
+![alt text](https://github.com/carlaferrarez/tweetbot/blob/master/images/img1.png?raw=true)
+
+
 After that, we will create the keyspace and the table
 
 ```
@@ -59,6 +63,11 @@ In our spark path folder:
 ```
 spark-shell --packages datastax:spark-cassandra-connector:2.0.0-M2-s_2.11 --conf sparkdra.connection.host=127.0.0.1
 ```
+![alt text](https://github.com/carlaferrarez/tweetbot/blob/master/images/img2.png?raw=true)
+
+![alt text](https://github.com/carlaferrarez/tweetbot/blob/master/images/img3.png?raw=true)
+
+
 After that you will be connected to Spark. Now we need to run the configs to set cassandra's database:
 
 ```
@@ -99,9 +108,19 @@ With all that settled up, now we just need to run the application. I used Visual
 ## How to use Telegram bot
 
 With the application running, start a conversation with bot @tweetcafecastroBot
+In my example I'll search for #covid
 
 ```
-
+/start
+```
+```
+/twitter
+```
+```
+/pesquisa
+```
+```
+/pesquisa covid 
 ```
 ## Future plans
 
